@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextComposer extends StatefulWidget {
+
+  TextComposer(this.sendMsg);
+  Function (String) sendMsg;
+
   @override
   _TextComposerState createState() => _TextComposerState();
 }
@@ -30,7 +34,7 @@ class _TextComposerState extends State<TextComposer> {
                 });
               },
               onSubmitted: (text){
-
+                widget.sendMsg(text);
               },
             ),
           ),
