@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "445435542319",
+    "firebase_url": "https://talkon-dd915.firebaseio.com",
+    "project_id": "talkon-dd915",
+    "storage_bucket": "talkon-dd915.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445435542319:android:bbea2a97dc80e6b01f7fda",
+        "android_client_info": {
+          "package_name": "br.com.bs.fluttermessager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445435542319-bap6bemkde8vig56vfbd6n35afcitanh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.bs.fluttermessager",
+            "certificate_hash": "2c419a5a428369b77cccf0ad6b626d6ee7e5f073"
+          }
+        },
+        {
+          "client_id": "445435542319-d1jmftak5q60ev2b4q5cvv3dcb0qr0e4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7jItF-jSomdar1ReP05_kTtieWivA1rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445435542319-d1jmftak5q60ev2b4q5cvv3dcb0qr0e4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
