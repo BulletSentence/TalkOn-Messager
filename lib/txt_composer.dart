@@ -19,9 +19,16 @@ class _TextComposerState extends State<TextComposer> {
           ),
           Expanded(
             child: TextField(
-              decoration: InputDecoration.collapsed(hintText: null),
+              decoration: InputDecoration.collapsed(hintText: "Send Message"),
+              onChanged: (text) {
+
+              },
+              onSubmitted: (text){
+
+              },
             ),
           ),
+          
         ],
       ),
     );
