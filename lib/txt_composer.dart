@@ -28,7 +28,12 @@ class _TextComposerState extends State<TextComposer> {
               },
             ),
           ),
-          
+          IconButton(
+            icon: Icon(Icons.send),
+            onPressed: (){
+
+            },
+          )
         ],
       ),
     );
