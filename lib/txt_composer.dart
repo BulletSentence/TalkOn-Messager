@@ -6,6 +6,9 @@ class TextComposer extends StatefulWidget {
 }
 
 class _TextComposerState extends State<TextComposer> {
+
+  bool _isComp = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +24,9 @@ class _TextComposerState extends State<TextComposer> {
             child: TextField(
               decoration: InputDecoration.collapsed(hintText: "Send Message"),
               onChanged: (text) {
-
+                setState(() {
+                  _isComp = text.isNotEmpty;
+                });
               },
               onSubmitted: (text){
 
@@ -30,9 +35,9 @@ class _TextComposerState extends State<TextComposer> {
           ),
           IconButton(
             icon: Icon(Icons.send),
-            onPressed: (){
-
-            },
+            onPressed: _isComp ? (){
+              
+            } : null,
           )
         ],
       ),
