@@ -12,11 +12,11 @@ class _TextComposerState extends State<TextComposer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: <Widget>[
           IconButton(
             icon: Icon(Icons.photo_camera),
-            color: Colors.red,
             onPressed: () {
               
             },
@@ -36,7 +36,6 @@ class _TextComposerState extends State<TextComposer> {
           ),
           IconButton(
             icon: Icon(Icons.send),
-            color: Colors.red,
             onPressed: _isComp ? (){
 
             } : null,

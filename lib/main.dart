@@ -14,6 +14,9 @@ class MyApp extends StatelessWidget {
       title: 'TalkOn Messager',
       theme: ThemeData(
         primarySwatch: Colors.red,
+        iconTheme: IconThemeData(
+          color: Colors.red,
+        )
       ),
       home: ChatScreen(),
     );
