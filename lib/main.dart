@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 void main() {
 
   runApp(MyApp());
-  Firestore.instance.collection("col").document("doc").setData({"text": "Almeida"});
+  Firestore.instance.collection("mensagem").document("msg1").setData({"text": "Oie"});
 }
 
 class MyApp extends StatelessWidget {
