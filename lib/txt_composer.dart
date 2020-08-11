@@ -16,6 +16,7 @@ class _TextComposerState extends State<TextComposer> {
         children: <Widget>[
           IconButton(
             icon: Icon(Icons.photo_camera),
+            color: Colors.red,
             onPressed: () {
               
             },
@@ -35,8 +36,9 @@ class _TextComposerState extends State<TextComposer> {
           ),
           IconButton(
             icon: Icon(Icons.send),
+            color: Colors.red,
             onPressed: _isComp ? (){
-              
+
             } : null,
           )
         ],

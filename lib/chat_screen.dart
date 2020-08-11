@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermessager/txt_composer.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text("User"),
         elevation: 1,
       ),
+      body: TextComposer(),
     );
   }
 }
