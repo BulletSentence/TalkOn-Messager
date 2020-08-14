@@ -13,12 +13,18 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
 
-  void _sendMsgToDatabase({String text, File imgFile}){
+  void _sendMsgToDatabase({String text, File imgFile})async{
+
+    Map<String, dynamic> data = {};
 
     if (imgFile != null){
       StorageUploadTask task = FirebaseStorage.instance.ref().child(
         DateTime.now().millisecondsSinceEpoch.toString()
       ).putFile(imgFile);
+
+      StorageTaskSnapshot takeSnapshot= await task.onComplete;
+      String url = await takeSnapshot.ref.getDownloadURL();
+      data['imgUrl'] = url;
     }
 
     Firestore.instance.collection("mensagem").add({"text" : text});
