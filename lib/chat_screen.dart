@@ -6,28 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:fluttermessager/txt_composer.dart';
 
 class ChatScreen extends StatefulWidget {
-
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
-  void _sendMsgToDatabase({String text, File imgFile})async{
-
+  void _sendMsgToDatabase({String text, File imgFile}) async {
     Map<String, dynamic> data = {};
 
-    if (imgFile != null){
-      StorageUploadTask task = FirebaseStorage.instance.ref().child(
-        DateTime.now().millisecondsSinceEpoch.toString()
-      ).putFile(imgFile);
+    if (imgFile != null) {
+      StorageUploadTask task = FirebaseStorage.instance
+          .ref()
+          .child(DateTime.now().millisecondsSinceEpoch.toString())
+          .putFile(imgFile);
 
-      StorageTaskSnapshot takeSnapshot= await task.onComplete;
+      StorageTaskSnapshot takeSnapshot = await task.onComplete;
       String url = await takeSnapshot.ref.getDownloadURL();
       data['imgUrl'] = url;
     }
 
-    Firestore.instance.collection("mensagem").add({"text" : text});
+    Firestore.instance.collection("mensagem").add({"text": text});
   }
 
   @override
@@ -37,7 +35,35 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text("User"),
         elevation: 1,
       ),
-      body: TextComposer(_sendMsgToDatabase),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: StreamBuilder<QuerySnapshot>(
+              stream: Firestore.instance.collection('messages').snapshots(),
+              builder: (context, snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.none:
+                  case ConnectionState.waiting:
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  default:
+                    List<DocumentSnapshot> documents = snapshot.data.documents;
+                    return ListView.builder(
+                        itemCount: documents.length,
+                        reverse: true,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text(documents[index].data['texto']),
+                          );
+                        });
+                }
+              },
+            ),
+          ),
+          TextComposer(_sendMsgToDatabase),
+        ],
+      ),
     );
   }
 }
