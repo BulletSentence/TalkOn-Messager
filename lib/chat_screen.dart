@@ -49,6 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     );
                   default:
                     List<DocumentSnapshot> documents = snapshot.data.documents;
+                    snapshot.data.documents.reversed.toList();
                     return ListView.builder(
                         itemCount: documents.length,
                         reverse: true,
