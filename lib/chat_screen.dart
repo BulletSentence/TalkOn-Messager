@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermessager/txt_composer.dart';
 
@@ -13,6 +14,13 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
 
   void _sendMsgToDatabase({String text, File imgFile}){
+
+    if (imgFile != null){
+      StorageUploadTask task = FirebaseStorage.instance.ref().child(
+        DateTime.now().millisecondsSinceEpoch.toString()
+      ).putFile(imgFile);
+    }
+
     Firestore.instance.collection("mensagem").add({"text" : text});
   }
 
