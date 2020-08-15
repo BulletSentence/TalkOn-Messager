@@ -41,7 +41,6 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-
   void _sendMsgToDatabase({String text, File imgFile}) async {
     final FirebaseUser user = await _getUser();
 
