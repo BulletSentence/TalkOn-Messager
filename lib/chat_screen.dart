@@ -80,7 +80,9 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text("User"),
+        title: Text(
+          _currentUser != null ? 'Hi, ${_currentUser.displayName}' : "Chat App"
+        ),
         elevation: 1,
       ),
       body: Column(
