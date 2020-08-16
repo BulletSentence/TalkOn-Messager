@@ -90,6 +90,10 @@ class _ChatScreenState extends State<ChatScreen> {
             onPressed: (){
               FirebaseAuth.instance.signOut();
               googleSignIn.signOut();
+              _scaffoldKey.currentState.showSnackBar(SnackBar(
+                content: Text('Disconnected'),
+                backgroundColor: Colors.green,
+              ));
             },
           ) : Container()
         ],
