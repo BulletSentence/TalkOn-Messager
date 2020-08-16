@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class ChatMessager extends StatelessWidget {
 
-  ChatMessager(this.data);
+  ChatMessager(this.data, this.mine);
   final Map<String, dynamic> data;
+  final bool mine;
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +12,14 @@ class ChatMessager extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: Row(
         children: <Widget>[
-          CircleAvatar(
-            backgroundImage: NetworkImage(data['senderPhotoUrl']),
+          !mine ?
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(data['senderPhotoUrl']),
+            ),
+          ) : Container(
+
           ),
           Expanded(
             child: Column(
@@ -34,7 +41,15 @@ class ChatMessager extends StatelessWidget {
                 )
               ],
             ),
-          )
+          ),
+          mine ?
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(data['senderPhotoUrl']),
+            ),
+          ) : Container(
+          ),
         ],
       ),
     );

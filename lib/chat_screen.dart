@@ -102,7 +102,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         itemCount: documents.length,
                         reverse: true,
                         itemBuilder: (context, index) {
-                          return ChatMessager(documents[index].data);
+                          return ChatMessager(documents[index].data, true);
                         });
                 }
               },
