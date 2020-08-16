@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttermessager/ChatMessager.dart';
 import 'package:fluttermessager/txt_composer.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -14,7 +15,6 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   FirebaseUser _currentUser;
@@ -22,21 +22,25 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    FirebaseAuth.instance.onAuthStateChanged.listen((user){
+    FirebaseAuth.instance.onAuthStateChanged.listen((user) {
       _currentUser = user;
     });
   }
 
   Future<FirebaseUser> _getUser() async {
     try {
-      final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-      final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+      final GoogleSignInAccount googleSignInAccount =
+          await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
       final AuthCredential credential = GoogleAuthProvider.getCredential(
-          idToken: googleSignInAuthentication.idToken, accessToken: googleSignInAuthentication.accessToken);
-      final AuthResult authResult = await FirebaseAuth.instance.signInWithCredential(credential);
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken);
+      final AuthResult authResult =
+          await FirebaseAuth.instance.signInWithCredential(credential);
       final FirebaseUser user = authResult.user;
       return user;
-    } catch (error){
+    } catch (error) {
       return null;
     }
   }
@@ -44,13 +48,11 @@ class _ChatScreenState extends State<ChatScreen> {
   void _sendMsgToDatabase({String text, File imgFile}) async {
     final FirebaseUser user = await _getUser();
 
-    if (user == null){
-      _scaffoldKey.currentState.showSnackBar(
-        SnackBar(
-          content: Text('Não foi possivel fazer o login, tente novamente'),
-          backgroundColor: Colors.red,
-        )
-      );
+    if (user == null) {
+      _scaffoldKey.currentState.showSnackBar(SnackBar(
+        content: Text('Não foi possivel fazer o login, tente novamente'),
+        backgroundColor: Colors.red,
+      ));
     }
 
     Map<String, dynamic> data = {
@@ -101,7 +103,6 @@ class _ChatScreenState extends State<ChatScreen> {
                         reverse: true,
                         itemBuilder: (context, index) {
                           return ChatMessager(documents[index].data);
-                          );
                         });
                 }
               },
