@@ -100,8 +100,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         itemCount: documents.length,
                         reverse: true,
                         itemBuilder: (context, index) {
-                          return ListTile(
-                            title: Text(documents[index].data['texto']),
+                          return ChatMessager(documents[index].data);
                           );
                         });
                 }
