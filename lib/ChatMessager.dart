@@ -28,6 +28,7 @@ class ChatMessager extends StatelessWidget {
                     Image.network(data['imgUrl']) :
                     Text (
                       data['text'],
+                      textAlign: mine ? TextAlign.end : TextAlign.start,
                       style: TextStyle(
                         fontSize: 16,
                       ),
@@ -44,7 +45,7 @@ class ChatMessager extends StatelessWidget {
           ),
           mine ?
           Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(left: 15),
             child: CircleAvatar(
               backgroundImage: NetworkImage(data['senderPhotoUrl']),
             ),
