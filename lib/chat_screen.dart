@@ -23,7 +23,9 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     FirebaseAuth.instance.onAuthStateChanged.listen((user) {
-      _currentUser = user;
+      setState(() {
+        _currentUser = user;
+      });
     });
   }
 
@@ -81,8 +83,9 @@ class _ChatScreenState extends State<ChatScreen> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text(
-          _currentUser != null ? 'Hi, ${_currentUser.displayName}' : "Chat App"
+          _currentUser != null ? 'Hi, ${_currentUser.displayName}' : "TalkOn"
         ),
+        centerTitle: true,
         elevation: 1,
         actions: <Widget>[
           _currentUser != null ? IconButton(
