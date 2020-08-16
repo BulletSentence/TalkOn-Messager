@@ -84,6 +84,15 @@ class _ChatScreenState extends State<ChatScreen> {
           _currentUser != null ? 'Hi, ${_currentUser.displayName}' : "Chat App"
         ),
         elevation: 1,
+        actions: <Widget>[
+          _currentUser != null ? IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: (){
+              FirebaseAuth.instance.signOut();
+              googleSignIn.signOut();
+            },
+          ) : Container()
+        ],
       ),
       body: Column(
         children: <Widget>[
