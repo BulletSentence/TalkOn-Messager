@@ -3,7 +3,8 @@
 
 Application to send and receive messages using the Internet.
 
-Database made using Firebase and Firestore for images, also uses google authentication to verify the user and their metadata.
+Database made using Firebase and Firestore for images, also uses google authentication to verify the user and their metadata. 
+Atualizações novas
 
 
 
