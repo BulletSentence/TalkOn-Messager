@@ -7,9 +7,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttermessager/chat.dart';
+import 'package:fluttermessager/onlinechat.dart';
 import 'package:fluttermessager/const.dart';
-import 'package:fluttermessager/settings.dart';
+import 'package:fluttermessager/online_Model.dart';
 import 'package:fluttermessager/widget/loading.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -375,7 +375,7 @@ class HomeScreenState extends State<HomeScreen> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Chat(
+                    builder: (context) => OnlineChat(
                           peerId: document.id,
                           peerAvatar: document.data()['photoUrl'],
                         )));

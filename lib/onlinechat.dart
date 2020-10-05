@@ -13,11 +13,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Chat extends StatelessWidget {
+class OnlineChat extends StatelessWidget {
   final String peerId;
   final String peerAvatar;
 
-  Chat({Key key, @required this.peerId, @required this.peerAvatar})
+  OnlineChat({Key key, @required this.peerId, @required this.peerAvatar})
       : super(key: key);
 
   @override
